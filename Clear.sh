@@ -9,35 +9,33 @@ green=$'\033[0;32m'
 clear;
 echo "--------------------------------------------------------------------------------"
 initial_df=$(df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$")
-echo -e "${purple}Geçerli alan:\n${reset}${initial_df}${reset}"
+echo -e "${purple}Valid field:\n${reset}${initial_df}${reset}"
 echo ""
 echo "--------------------------------------------------------------------------------"
 cd;
-read -n1 -p "${purple}Bilgisayarınızda yer açmak istermisiniz ?[${green}y${purple}/${red}N${purple}]${reset} " input
+read -n1 -p "${purple}Do you want to free up space on your computer?[${green}y${purple}/${red}N${purple}]${reset} " input
 echo ""
 
 if [ -n "$input" ] && [ "$input" = "y" ]; then
-    echo "Temizlik başlıyor lütfen bekleyin...";
+    echo "Cleaning is starting please wait...";
     echo "*************************************************************************************"
-    echo "./.Trash/* Temizleniyor lütfen bekleyin..."
+    echo "./.Trash/* Cleaning up please wait..."
     rm -rf ./.Trash/*;
-    echo "./.cache/* Temizleniyor lütfen bekleyin..."
+    echo "./.cache/* Cleaning up please wait..."
     rm -rf ./.cache/*;
-    echo "./Library/Caches/* Temizleniyor lütfen bekleyin..."
+    echo "./Library/Caches/* Cleaning up please wait..."
     rm -rf ./Library/Caches/*;
-    echo "./Library/Containers/com.docker.docker/* Temizleniyor lütfen bekleyin..."
+    echo "./Library/Containers/com.docker.docker/* Cleaning up please wait..."
     rm -rf ./Library/Containers/com.docker.docker/*;
-    echo "./Library/Containers/* Temizleniyor lütfen bekleyin..."
+    echo "./Library/Containers/* Cleaning up please wait..."
     rm -rf ./Library/Containers/*;
-    echo "./Library/Application Support/Code/User/* Temizleniyor lütfen bekleyin..."
+    echo "./Library/Application Support/Code/User/* Cleaning up please wait..."
     rm -rf ./Library/Application Support/Code/User/*;
-    echo "./Library/Application Support/Code/CachedData/* Temizleniyor lütfen bekleyin..."
+    echo "./Library/Application Support/Code/CachedData/* Cleaning up please wait..."
     rm -rf ./Library/Application Support/Code/CachedData/*;
-    echo "./Library/Developer/CoreSimulator/* Temizleniyor lütfen bekleyin..."
+    echo "./Library/Developer/CoreSimulator/* Cleaning up please wait..."
     rm -rf ./Library/Developer/CoreSimulator/*;
     echo "*************************************************************************************"
-    echo "-------------------------------------------------------------------------------------"
-    echo "Diğer dosyalar temizleniyor (yeni eklenen silinecek dosyalar) lütfen bekleyin..."
     echo "-------------------------------------------------------------------------------------"
     /bin/rm -rf "$HOME"/Library/*.42* &>/dev/null
     /bin/rm -rf "$HOME"/*.42* &>/dev/null
@@ -67,24 +65,24 @@ if [ -n "$input" ] && [ "$input" = "y" ]; then
     /bin/rm -rf "$HOME"/Desktop/Piscine\ Rules\ *.mp4
     /bin/rm -rf "$HOME"/Desktop/PLAY_ME.webloc
     find "$HOME"/Desktop -name .DS_Store -depth -exec /bin/rm {} \; &>/dev/null
-    echo "${green}Temizlik yapıldı."
+    echo "${green}Cleaning done."
     else
-    echo "Temizlik yapılmadı.";
+    echo "Cleaning was not done.";
     fi
-read -n1 -p "${purple}İndirilenler klasörünü de temizlemek ister misiniz ?[${green}y${purple}/${red}N${purple}]${reset} " input
+read -n1 -p "${purple}Do you want to clean the Downloads folder as well?[${green}y${purple}/${red}N${purple}]${reset} " input
 echo ""
 if [ -n "$input" ] && [ "$input" = "y" ]; then
-        echo "İndirilenler temizleniyor lütfen bekleyin...";
+        echo "Cleaning downloads please wait...";
 		rm -rf ./Downloads/*;
-        echo "${green}Temizlik yapıldı."
+        echo "${green}Cleaning done."
     echo "${reset}--------------------------------------------------------------------------------"
-    echo -e "${purple}\nTemizlikten önceki alan:\n${reset}${initial_df}${purple}\n\nTemizlikten sonraki alan:${reset}"
+    echo -e "${purple}\nArea before cleaning:\n${reset}${initial_df}${purple}\n\nArea after cleaning:${reset}"
         df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
     echo "--------------------------------------------------------------------------------"
     else
-    echo "İndirilenler temizlenmedi.";
+    echo "Downloads are not cleared.";
     echo "--------------------------------------------------------------------------------"
-    echo -e "${purple}\nTemizlikten önceki alan:\n${reset}${initial_df}${purple}\n\nTemizlikten sonraki alan:${reset}"
+    echo -e "${purple}\nArea before cleaning:\n${reset}${initial_df}${purple}\n\nArea after cleaning:${reset}"
         df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$"
     echo "--------------------------------------------------------------------------------"
 
