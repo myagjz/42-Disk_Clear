@@ -1,3 +1,3 @@
 # 42-Disk_Clear
 
-bash ./clear.sh
+bash clear.sh
